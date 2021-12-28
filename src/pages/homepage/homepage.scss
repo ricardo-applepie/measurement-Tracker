@@ -1,0 +1,41 @@
+.homepage {
+    background-color: white;
+    margin-top: 20px;
+
+    span {
+        display: inline-block;
+    }
+
+    .list-weight{
+        margin-right: 40px;
+    }
+    input {
+        padding: 16.5px 14px;
+    }
+    button {
+        padding: 16.5px 14px;
+        width: 100% ;
+    }
+    .shadow {
+        padding: 20px 0 80px 0;
+    }
+    .list-group-item{
+        margin: 10px 0;
+        border-top-width: 1px; 
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+    }
+}
+
+.list-wrapper {
+    margin: auto;
+    margin-top: 30px;
+}
+.form-section {
+    div {
+      margin: auto;
+    }
+   
+}

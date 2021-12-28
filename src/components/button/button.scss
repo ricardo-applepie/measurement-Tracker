@@ -1,0 +1,13 @@
+button {
+   background-color: black;
+   color: white;
+
+   &:hover {
+       background-color: black;
+       color: white;
+       transform: scale(1.2);
+   } 
+
+}
+
+
