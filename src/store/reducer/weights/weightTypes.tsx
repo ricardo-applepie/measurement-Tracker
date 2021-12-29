@@ -1,4 +1,5 @@
 export interface Measurement {
+  id: number;
   weight: string;
   date: string;
 }

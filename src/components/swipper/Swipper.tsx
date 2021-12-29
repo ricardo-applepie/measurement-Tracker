@@ -7,6 +7,7 @@ import React, {
 import "./swipper.scss";
 import excercise from "../../images/excercise.png";
 import lenus from "../../images/lenus.png";
+
 type ReactNode =
   | ReactChild
   | ReactFragment
@@ -15,6 +16,7 @@ type ReactNode =
   | null
   | undefined;
 
+// carousel component , used to display the slider images .
 function Carousel(props: ReactNode) {
   return (
     <div

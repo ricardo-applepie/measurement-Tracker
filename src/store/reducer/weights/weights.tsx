@@ -1,14 +1,18 @@
-import { Action } from "../../actions/actionTypes/actionTypes";
-import { WeightMeasurements, Measurement } from "./weightTypes";
+import { Action } from "../../actionTypes/actionTypes";
+import { WeightMeasurements } from "./weightTypes";
+
 var _ = require("lodash");
 
 const INITIALSTATE: WeightMeasurements = {
+  // dummy data to be displayed , before actual data is added by  the user .
   measurements: [
     {
+      id: 1,
       weight: "50kg",
       date: "Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)",
     },
     {
+      id: 2,
       weight: "80kg",
       date: "Tues Sep 30 2014 21:11:54 GMT+0200 (Central European Summer Time)",
     },
@@ -16,11 +20,12 @@ const INITIALSTATE: WeightMeasurements = {
   updating: false,
 };
 
-function weightReducer(
+function MeasurementReducer(
   state: WeightMeasurements = INITIALSTATE,
   action: Action
 ) {
   switch (action.type) {
+    // adding a measurement by dispatching this action .
     case "addMessurement":
       let addedMeasurement = action.payload;
       const newMeasurements = [...state.measurements, addedMeasurement];
@@ -29,26 +34,47 @@ function weightReducer(
         measurements: newMeasurements,
       });
       break;
-    case "deletMeasurement":
-      const deletedMeasurement = _.find(state.measurements, {
-        weight: action.payload.weight,
-        date: action.payload.date,
+    // deleting a measurement by dispatching this action .
+    case "deleteMeasurement":
+      console.log(action.payload);
+      const deletedMeasurements = state.measurements.filter((measurement) => {
+        return (
+          measurement.weight !== action.payload.weight &&
+          measurement.date !== action.payload.date
+        );
       });
-      let newMessurements = _.filter(
-        state.measurements,
-        function (measurement: any) {
+
+      console.log(deletedMeasurements);
+
+      return Object.assign({}, state, {
+        updating: true,
+        measurements: deletedMeasurements,
+      });
+      break;
+    // updating a measurement by dispatching this action .
+
+    case "updateMeasurement":
+      const oldMeasurement = action.payload.oldMeasurement;
+      const newMeasurement = action.payload.newMeasurement;
+
+      const updatedMeasurement = state.measurements.filter(
+        (measurement: any) => {
           return (
-            measurement.weight !== deletedMeasurement.weight &&
-            measurement.date !== deletedMeasurement.date
+            measurement.weight !== action.payload.oldMeasurement.weight &&
+            measurement.date !== action.payload.oldMeasurement.date
           );
         }
       );
 
-      return Object.assign({}, state, {
-        measurements: newMessurements,
-        updating: true,
-      });
+      return Object.assign(
+        {},
+        state,
+        { updating: true },
+        { measurements: [...updatedMeasurement, newMeasurement] }
+      );
+
       break;
+    //  returning  default state
     case "MessurementSuccess":
       return Object.assign({}, state, { updating: false });
       break;
@@ -56,4 +82,4 @@ function weightReducer(
       return state;
   }
 }
-export default weightReducer;
+export default MeasurementReducer;

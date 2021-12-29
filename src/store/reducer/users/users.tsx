@@ -1,10 +1,10 @@
-import { Action } from "../../actions/actionTypes/actionTypes";
+import { Action } from "../../actionTypes/actionTypes";
 
 let INITIALSTATE: Array<{ name: string; age: number; city: string }> = [
   {
     name: "Ricardo",
     age: 12,
-    city: "Germany",
+    city: "Copenhagen",
   },
 ];
 

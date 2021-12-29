@@ -3,7 +3,5 @@ import thunk from "redux-thunk";
 import reducers from "./combinedReducers";
 
 import { composeWithDevTools } from "redux-devtools-extension";
-// creating  Redux store .
+// creating  Redux store , and using composeWithDevTools for debugging  .
 export const store = createStore(reducers, composeWithDevTools());
-
-console.log(store.getState());

@@ -3,7 +3,6 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 // This is a progress bar component , which displays measurements total
-
 function ProgressBar(props: any) {
   const value = 0.66;
   return (

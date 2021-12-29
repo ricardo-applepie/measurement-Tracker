@@ -1,10 +1,33 @@
+// general css which is used across the whole site , this is very important .
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+  line-height: 1.5;
 }
 $dark-theme: #0000;
-$primary-color: #f8bbd0 ;
-$accent-color: #6a1b9a ;
-
+$primary-color: #f8bbd0;
+$accent-color: #6a1b9a;
+$white-color: #ffffff;
 svg {
-cursor: pointer;
+  cursor: pointer;
+}
+//overiding boostrap default behaviour
+.input-group {
+  // never to use important in production , this is just for testing reasons
+  align-items: center !important;
+}
+//overiding boostrap modal default behaviour
+
+.css-10d6jr0 {
+  // never to use important in production , this is just for testing reasons
+  width: 100% !important;
+}
+input {
+  // never to use important in production , this is just for testing reasons
+  background-color: $white-color !important;
+}
+footer {
+  background-color: $dark-theme;
 }
