@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import usersReducer from "./reducer/users/users";
-import MeasurementReducer from "./reducer/weights/weights";
+import MeasurementReducer from "./reducer/measurements/measurements";
 
 // combining all redux reducers , which are simple functions which an object or state
 const reducers = combineReducers({
   users: usersReducer,
-  weights: MeasurementReducer,
+  measurements: MeasurementReducer,
 });
 
 export default reducers;

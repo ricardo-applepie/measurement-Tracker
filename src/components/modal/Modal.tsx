@@ -2,6 +2,7 @@ import * as React from "react";
 import { styled, Box } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import Form from "../form/Form";
+
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
   z-index: 1300;
@@ -34,8 +35,9 @@ const style = {
   pb: 3,
 };
 
-// General popup Modal , used to edit measurement .
+// General popup Modal component , used to edit user  measurement in this application.
 export default function Modal(props: any) {
+  // intially setting Modal state to false which hides modal popup
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

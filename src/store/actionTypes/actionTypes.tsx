@@ -1,9 +1,13 @@
-import { Measurement } from "../actionCreators/actions";
-
-interface getUsers {
-  type: "test";
-  payload: Object;
+export interface Measurement {
+  id: number;
+  weight: string;
+  date?: string | any;
 }
+
+export interface MeasurementSuccess {
+  type: string;
+}
+
 interface DeleteMeasurement {
   type: "deleteMeasurement";
   payload: {
@@ -11,10 +15,12 @@ interface DeleteMeasurement {
     date: string;
   };
 }
-interface addWeight {
-  type: "addMessurement";
+
+interface AddWeight {
+  type: "addMeasurement";
   payload: Object;
 }
+
 interface UpdateMessurement {
   type: "updateMeasurement";
   payload: {
@@ -22,13 +28,19 @@ interface UpdateMessurement {
     newMeasurement: Measurement;
   };
 }
+
 interface MessurementSuccess {
   type: "MessurementSuccess";
 }
 
+interface GetUsers {
+  type: "test";
+  payload: Object;
+}
+
 export type Action =
-  | getUsers
-  | addWeight
+  | GetUsers
+  | AddWeight
   | MessurementSuccess
   | DeleteMeasurement
   | UpdateMessurement;

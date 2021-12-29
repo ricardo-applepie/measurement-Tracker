@@ -5,23 +5,22 @@ import Iconbuttons from "../../components/icon/Icon";
 import DatePicker from "../../components/date/Date";
 import ProgressBar from "../../components/progressBar/ProgressBar";
 import Carousel from "../../components/swipper/Swipper";
-import { HomeProps, homepageState } from "./homepageTypes";
-import { connect, useDispatch } from "react-redux";
+import { HomePageProps, HomepageState, Measurement } from "./homepageTypes";
+import { connect } from "react-redux";
 import {
   deleteMeasurement,
-  Measurement,
   measurementSuccess,
 } from "../../store/actionCreators/actions";
 import Modal from "../../components/modal/Modal";
 
-class HomePage extends React.Component<HomeProps, homepageState> {
-  constructor(props: HomeProps) {
+class HomePage extends React.Component<HomePageProps, HomepageState> {
+  constructor(props: HomePageProps) {
     super(props);
     this.state = this.createStore(props);
-    this.handleDelete = this.handleDelete.bind(this);
+    console.log(this.state);
   }
 
-  componentWillReceiveProps(prevprops: any, nextProps: any) {
+  componentWillReceiveProps(prevprops: any) {
     // updates HomePage state if props from parent changes
     if (prevprops.measurements) {
       this.setState({
@@ -36,13 +35,9 @@ class HomePage extends React.Component<HomeProps, homepageState> {
     };
   }
 
-  handleDelete = () => {
-    console.log(this);
-  };
-
   render() {
-    const { measurements } = this.state.measurements;
-    const updating = this.state.measurements.updating;
+    const measurements = this.state.measurements.measurements;
+    const updating = this.state.measurements.measurements.updating;
     const totalMeasurements = measurements.length;
 
     return (
@@ -62,7 +57,7 @@ class HomePage extends React.Component<HomeProps, homepageState> {
             <div className="list-wrapper">
               <ul className="list-group">
                 {measurements &&
-                  measurements.map((measurement: any, i: number) => {
+                  measurements.map((measurement: Measurement, i: number) => {
                     return (
                       <React.Fragment>
                         <li
@@ -134,7 +129,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 // connecting redux store to Homepage component , so this component can have access to state .
 export default connect(
   (state: any) => ({
-    measurements: state.weights,
+    measurements: state.measurements,
   }),
   mapDispatchToProps
 )(HomePage);

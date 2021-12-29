@@ -4,7 +4,7 @@ export interface Measurement {
   date: string;
 }
 
-export interface WeightMeasurements {
+export interface TotalMeasurements {
   measurements: Array<Measurement>;
   updating: boolean;
 }

@@ -1,9 +1,9 @@
 import { Action } from "../../actionTypes/actionTypes";
-import { WeightMeasurements } from "./weightTypes";
+import { TotalMeasurements, Measurement } from "./measurementsTypes";
 
 var _ = require("lodash");
 
-const INITIALSTATE: WeightMeasurements = {
+const INITIALSTATE: TotalMeasurements = {
   // dummy data to be displayed , before actual data is added by  the user .
   measurements: [
     {
@@ -21,12 +21,12 @@ const INITIALSTATE: WeightMeasurements = {
 };
 
 function MeasurementReducer(
-  state: WeightMeasurements = INITIALSTATE,
+  state: TotalMeasurements = INITIALSTATE,
   action: Action
 ) {
   switch (action.type) {
-    // adding a measurement by dispatching this action .
-    case "addMessurement":
+    // adding a user measurement by dispatching addMeasurement action .
+    case "addMeasurement":
       let addedMeasurement = action.payload;
       const newMeasurements = [...state.measurements, addedMeasurement];
       return Object.assign({}, state, {
@@ -34,9 +34,9 @@ function MeasurementReducer(
         measurements: newMeasurements,
       });
       break;
-    // deleting a measurement by dispatching this action .
+
+    // deleting a user measurement by dispatching deleteMeasurement action .
     case "deleteMeasurement":
-      console.log(action.payload);
       const deletedMeasurements = state.measurements.filter((measurement) => {
         return (
           measurement.weight !== action.payload.weight &&
@@ -44,42 +44,40 @@ function MeasurementReducer(
         );
       });
 
-      console.log(deletedMeasurements);
-
       return Object.assign({}, state, {
         updating: true,
         measurements: deletedMeasurements,
       });
       break;
+
     // updating a measurement by dispatching this action .
-
     case "updateMeasurement":
-      const oldMeasurement = action.payload.oldMeasurement;
-      const newMeasurement = action.payload.newMeasurement;
-
+      const edittedMeasurement = action.payload.newMeasurement;
       const updatedMeasurement = state.measurements.filter(
-        (measurement: any) => {
+        (measurement: Measurement) => {
           return (
             measurement.weight !== action.payload.oldMeasurement.weight &&
             measurement.date !== action.payload.oldMeasurement.date
           );
         }
       );
-
+      // using object.assing here , you can also use spread operator
       return Object.assign(
         {},
         state,
         { updating: true },
-        { measurements: [...updatedMeasurement, newMeasurement] }
+        { measurements: [...updatedMeasurement, edittedMeasurement] }
       );
 
       break;
-    //  returning  default state
+
     case "MessurementSuccess":
       return Object.assign({}, state, { updating: false });
       break;
+    //  returning  default state if no action
     default:
       return state;
   }
 }
+
 export default MeasurementReducer;

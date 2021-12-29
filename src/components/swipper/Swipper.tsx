@@ -16,7 +16,7 @@ type ReactNode =
   | null
   | undefined;
 
-// carousel component , used to display the slider images .
+// Carousel component , used to display the slider images .
 function Carousel(props: ReactNode) {
   return (
     <div

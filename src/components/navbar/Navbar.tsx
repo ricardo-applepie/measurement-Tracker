@@ -1,5 +1,6 @@
 import React from "react";
-// boostrap navbar , just to make the web app look beautifull .
+
+// boostrap navbar , just to make the web app look beautifull , no functionality added .
 function Navbar() {
   return (
     <div>

@@ -1,26 +1,25 @@
-export interface Measurement {
-  id: number;
-  weight: string;
-  date?: string | any;
-}
+import { Measurement, MeasurementSuccess } from "../actionTypes/actionTypes";
 
 export function addMeasurement(measurement: Measurement) {
   return {
-    type: "addMessurement",
+    type: "addMeasurement",
     payload: measurement,
   };
 }
+
 export function deleteMeasurement(measurement: Measurement) {
   return {
     type: "deleteMeasurement",
     payload: measurement,
   };
 }
-export function measurementSuccess() {
+
+export function measurementSuccess(): MeasurementSuccess {
   return {
     type: "MessurementSuccess",
   };
 }
+
 export function updateMeasurement(
   newMeasurement: Measurement,
   oldMeasurement: Measurement

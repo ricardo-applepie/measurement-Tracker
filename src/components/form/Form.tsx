@@ -10,61 +10,65 @@ import {
   updateMeasurement,
 } from "../../store/actionCreators/actions";
 
+// measurement types
 interface Measurement {
   id: string;
   weight: string;
   date: string;
 }
 
-//this is the  form state types
+// form state types
 interface FormState {
   users: Array<any>;
-  weights: {
+  measurements: {
     measurements: Array<Measurement>;
     updating: Boolean;
   };
 }
 
 function Form(props: any) {
+  // getting dispatch from react Hooks .
   const dispatch = useDispatch();
-  // getting the measurements total measurements Length once for performance reasons .
+  // getting total measurements Length only once , so as to improve performance .
   const totalMeasurementsLength = useSelector(
-    (state: FormState) => state.weights.measurements.length
+    (state: FormState) => state.measurements.measurements.length
   );
 
-  // this input variable  stores  weight information ;
+  // input stores  weight information ;
   const [input, setInput] = useState("");
   // setting date value from the picker component.
   const [value, setValue] = React.useState<Date | null>(
     new Date("2014-08-18T21:11:54")
   );
 
-  const handleChange = (newValue: Date | null) => {
+  const handleDateChange = (newValue: Date | null) => {
     console.log(newValue);
     setValue(newValue);
   };
 
-  //this function submits the user measurement
-  const submitMeasurement = (e: React.SyntheticEvent) => {
+  // this function submits the user measurement .
+  const submitNewMeasurement = (e: React.SyntheticEvent) => {
     e.preventDefault();
+
     if (input.length === 0) {
       alert("please enter Weight");
       return;
     }
-    // new user measurement
+
+    // a new user measurement
     let measurement = {
       id: totalMeasurementsLength + 1,
       weight: input,
       date: value,
     };
-    // adding measurement from form input
+
+    // dispatches action to add a measurement .
     dispatch(addMeasurement(measurement));
-    // removes loading spinner after measurement has been added
+    // removes loading spinner after user measurement has been,  added after 1 seconds .
     setTimeout(() => {
       dispatch(measurementSuccess());
     }, 1000);
-
-    setValue(new Date());
+    // reseting date and input value after measurement has been added
     setInput("");
   };
 
@@ -75,8 +79,10 @@ function Form(props: any) {
       alert("please enter Weight");
       return;
     }
+
     // getting the existing or old measurement
     let oldMeasurement = props.measurement;
+
     // getting the new measurements
     let newMeasurement = {
       id: totalMeasurementsLength + 1,
@@ -84,8 +90,9 @@ function Form(props: any) {
       date: value,
     };
 
-    // deleting the old measurement which is to be update
+    // deleting the old measurement
     deleteMeasurement(oldMeasurement);
+
     // dispatching updateMeasurement action to update this  measurement.
     dispatch(updateMeasurement(newMeasurement, oldMeasurement));
 
@@ -93,6 +100,8 @@ function Form(props: any) {
     setTimeout(function () {
       dispatch(measurementSuccess());
     }, 2000);
+
+    // reseting date and input value after measurement has been added
     setValue(new Date());
     setInput("");
   };
@@ -101,10 +110,10 @@ function Form(props: any) {
     <div className="form">
       <form
         onSubmit={
-          // conditional checking which function to be executed depeneding if the showUpdateButton is true  or undifined
+          // conditional checks which function is to be executed depeneding if the showUpdateButton prop is true  or undifined
           props.showUpdateButton
             ? (e) => handleMeasurementUpdate(e)
-            : (e) => submitMeasurement(e)
+            : (e) => submitNewMeasurement(e)
         }
         className="form-wrapper"
       >
@@ -121,7 +130,7 @@ function Form(props: any) {
             />
           </div>
           <div className="col">
-            <DatePicker value={value} handleChange={handleChange} />
+            <DatePicker value={value} handleChange={handleDateChange} />
           </div>
           <div className="col">
             {props.showUpdateButton ? (

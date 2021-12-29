@@ -5,11 +5,12 @@ export interface Measurement {
   weight: string;
   date?: string | any;
 }
-export type HomeProps = {
+
+export type HomePageProps = {
   measurements: Array<Measurement>;
   dispatch: Dispatch;
 };
 
-export type homepageState = {
+export type HomepageState = {
   measurements: any;
 };
