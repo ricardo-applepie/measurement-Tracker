@@ -1,11 +1,16 @@
-interface Weight{
-    time: Date, 
-    size: string
+interface Meassurement {
+  weight: string;
+  date: string;
 }
 
-export function addWeight(weight: Weight) {
-    return {
-        type : "addWeight", 
-        payload: weight
-    }
+export function addMeasurement(measurement: any) {
+  return {
+    type: "addMessurement",
+    payload: measurement,
+  };
+}
+export function measurementSuccess() {
+  return {
+    type: "MessurementSuccess",
+  };
 }

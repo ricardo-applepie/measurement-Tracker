@@ -1,32 +1,29 @@
-import React from 'react';
+import React from "react";
 
-import DeleteIcon from '@mui/icons-material/Delete';
-
+import DeleteIcon from "@mui/icons-material/Delete";
 
 interface IconProps {
-    iconType: string
+  iconType: string;
 }
 
-function IconButtons(props:IconProps) {
- 
-          switch (props.iconType) {
-            case "delete":
-                return (
-                <div>
-                   <svg data-testid="DeleteIcon"></svg>
-                </div> 
-                )
-                break;
-        
-            default:
-                return (
-                <div >
-                  <svg data-testid="DeleteIcon"></svg>
-                </div> 
-                )
-                break;
-        }
+function IconButtons(props: IconProps) {
+  switch (props.iconType) {
+    case "delete":
+      return (
+        <div>
+          <svg data-testid="DeleteIcon"></svg>
+        </div>
+      );
+      break;
 
+    default:
+      return (
+        <div>
+          <svg data-testid="DeleteIcon"></svg>
+        </div>
+      );
+      break;
+  }
 }
 
-export default IconButtons ; 
+export default IconButtons;

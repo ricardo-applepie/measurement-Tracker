@@ -1,13 +1,10 @@
 button {
-   background-color: black;
-   color: white;
+  background-color: black;
+  color: white;
 
-   &:hover {
-       background-color: black;
-       color: white;
-       transform: scale(1.2);
-   } 
-
+  &:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.2);
+  }
 }
-
-

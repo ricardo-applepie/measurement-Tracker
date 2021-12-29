@@ -1,43 +1,68 @@
 .homepage {
-    background-color: white;
+  background-color: white;
+  margin-top: 20px;
+  .hero {
+    position: relative;
+  }
+  .center {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .error {
+    color: red;
+  }
+  .success {
+    color: green;
+  }
+  .date {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .spinner-border {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 30;
+    width: 8rem;
+    height: 8rem;
+  }
+  span {
+    display: inline-block;
+  }
+  .excercise {
     margin-top: 20px;
+  }
+  .list-weight {
+    margin-right: 40px;
+  }
+  input {
+    padding: 16.5px 14px;
+  }
+  button {
+    padding: 16.5px 14px;
+    width: 100%;
+  }
+  .shadow {
+    padding: 20px 0 80px 0;
+  }
+  .list-group-item {
+    margin: 10px 0;
+    border-top-width: 1px;
 
-    span {
-        display: inline-block;
+    &:hover {
+      background-color: black;
+      color: white;
     }
-    .excercise {
-        margin-top: 20px;
-    }
-    .list-weight{
-        margin-right: 40px;
-    }
-    input {
-        padding: 16.5px 14px;
-    }
-    button {
-        padding: 16.5px 14px;
-        width: 100% ;
-    }
-    .shadow {
-        padding: 20px 0 80px 0;
-    }
-    .list-group-item{
-        margin: 10px 0;
-        border-top-width: 1px; 
-        &:hover {
-            background-color: black;
-            color: white;
-        }
-    }
+  }
 }
 
 .list-wrapper {
-    margin: auto;
-    margin-top: 30px;
+  margin: auto;
+  margin-top: 30px;
 }
 .form-section {
-    div {
-      margin: auto;
-    }
-   
+  div {
+    margin: auto;
+  }
 }

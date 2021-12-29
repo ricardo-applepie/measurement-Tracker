@@ -1,11 +1,23 @@
 interface getUsers {
-    type: 'test';
-    payload: Object
+  type: "test";
+  payload: Object;
 }
-
+interface DeletMeasurement {
+  type: "deletMeasurement";
+  payload: {
+    weight: string;
+    date: string;
+  };
+}
 interface addWeight {
-    type: 'addWeight';
-    payload: Object
+  type: "addMessurement";
+  payload: Object;
 }
-
-export type Action = getUsers | addWeight;
+interface MessurementSuccess {
+  type: "MessurementSuccess";
+}
+export type Action =
+  | getUsers
+  | addWeight
+  | MessurementSuccess
+  | DeletMeasurement;
