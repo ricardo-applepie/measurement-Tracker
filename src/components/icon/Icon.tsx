@@ -2,11 +2,10 @@ import React from 'react';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 
+
 interface IconProps {
     iconType: string
 }
-
-
 
 function IconButtons(props:IconProps) {
  

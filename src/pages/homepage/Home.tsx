@@ -3,6 +3,8 @@ import './homepage.scss' ;
 import Form from '../../components/form/Form'; 
 import Iconbuttons from '../../components/icon/Icon'; 
 import DatePicker from '../../components/date/Date'; 
+import ProgressBar from '../../components/progressBar/ProgressBar'; 
+import Carousel from '../../components/swipper/Swipper';
 
 type HomeProps = {
   // using `interface` is also ok
@@ -31,11 +33,13 @@ class Home extends React.Component<HomeProps, State> {
     render() {
 
         return (
-            <div className="homepage">
-              <section className="row form-section">
-                <div className="col col-md-6  shadow">
-                  <Form />
-                
+            <div className="homepage ">
+              <section className="row form-section hero">
+                <div className="col-md-3">
+                  <ProgressBar />
+                </div>
+                <div className="col col-md-8 shadow">
+                  <Form /> 
                    <div className="list-wrapper">
                       <ul className="list-group">
                         <li className="list-group-item"><span className="list-weight">Dapibus ac facilisis in</span>
@@ -64,6 +68,16 @@ class Home extends React.Component<HomeProps, State> {
                             </li>                     
                        </ul>
                     </div>
+                </div>
+              </section>
+              <section className="excercise">
+                <div className="row">
+                  <div className="col col-md-8">
+                    <Carousel />
+                  </div>
+                  <div className="col-md-3 ">
+                    <ProgressBar />
+                  </div>
                 </div>
               </section>
             </div>
