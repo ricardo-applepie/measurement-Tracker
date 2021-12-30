@@ -63,6 +63,7 @@ class HomePage extends React.Component<HomeProps, homepageState> {
           </div>
           <div className="col col-md-8 shadow">
             <Form deleteMeasurement={false} />
+            <h3 className="center">User Timeline</h3>
             <div className="list-wrapper">
               <ul className="list-group">
                 {measurements &&

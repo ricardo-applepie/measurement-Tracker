@@ -36,11 +36,11 @@ let deletedMeasurement = {
   date: "Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)",
 };
 
-test("testing INITIALSTATE object ", () => {
+test("testing INITIALSTATE object", () => {
   expect(INITIALSTATE).toEqual(INITIALSTATE);
 });
 
-test("testing addMeasurement action  ", () => {
+test("testing addMeasurement action ", () => {
   expect(addMeasurement(measurement)).toEqual({
     type: "addMeasurement",
     payload: measurement,
@@ -88,15 +88,17 @@ test("Testing redux previous state when dispatching deleteMeasurement ", () => {
 test("testing measurements state ", () => {
   const store = createStore(reducers, composeWithDevTools());
   const value = 2 + 2;
-  expect(store.getState().weights.measurements.length).toBeGreaterThan(1);
-  expect(store.getState().weights.measurements[0]).toEqual({
+  expect(store.getState().measurementsData.measurements.length).toBeGreaterThan(
+    1
+  );
+  expect(store.getState().measurementsData.measurements[0]).toEqual({
     id: 1,
     weight: "50kg",
     date: "Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)",
   });
 
-  expect(store.getState().weights.measurements[0].id).toBe(1);
-  expect(store.getState().weights.measurements[1].id).toBe(2);
-  expect(store.getState().weights.measurements[0].weight).toBe("50kg");
-  expect(store.getState().weights.measurements[1].weight).toBe("80kg");
+  expect(store.getState().measurementsData.measurements[0].id).toBe(1);
+  expect(store.getState().measurementsData.measurements[1].id).toBe(2);
+  expect(store.getState().measurementsData.measurements[0].weight).toBe("50kg");
+  expect(store.getState().measurementsData.measurements[1].weight).toBe("80kg");
 });

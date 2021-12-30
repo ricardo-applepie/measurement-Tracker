@@ -2,8 +2,15 @@ import { Action } from "../../actionTypes/actionTypes";
 import { WeightMeasurements, Measurement } from "./measurementsTypes";
 
 var _ = require("lodash");
-const browserStorage = localStorage.getItem("reduxState");
-const persistedState = browserStorage && JSON.parse(browserStorage);
+
+function isNotJestEnvironment() {
+  return process.env.JEST_WORKER_ID == undefined;
+}
+
+//ReferenceError: localStorage is not defined during jest test
+let browserStorage: any;
+//cannot persist state for now , because jest cant access the localStorage Object .
+let persistedState: any;
 
 const INITIALSTATE: WeightMeasurements = {
   // dummy data to be displayed , before actual data is added by  the user .
@@ -22,8 +29,17 @@ const INITIALSTATE: WeightMeasurements = {
   updating: false,
 };
 
+if (isNotJestEnvironment()) {
+  //this prevents the error called ReferenceError: localStorage is not defined during jest test
+  browserStorage = localStorage.getItem("reduxState");
+  //cannot persist state for now , because jest cant access the localStorage Object .
+  persistedState = browserStorage && JSON.parse(browserStorage);
+}
+
 function MeasurementReducer(
-  state: WeightMeasurements = persistedState.measurementsData || INITIALSTATE,
+  state: WeightMeasurements = (persistedState &&
+    persistedState.measurementsData) ||
+    INITIALSTATE,
   action: Action
 ) {
   switch (action.type) {
@@ -50,15 +66,11 @@ function MeasurementReducer(
     // updating a measurement by dispatching this action .
 
     case "updateMeasurement":
-      const oldMeasurement = action.payload.oldMeasurement;
       const newMeasurement = action.payload.newMeasurement;
 
       const updatedMeasurement = state.measurements.filter(
         (measurement: Measurement) => {
-          return (
-            measurement.weight !== action.payload.oldMeasurement.weight &&
-            measurement.date !== action.payload.oldMeasurement.date
-          );
+          return measurement.id !== action.payload.oldMeasurement.id;
         }
       );
 
