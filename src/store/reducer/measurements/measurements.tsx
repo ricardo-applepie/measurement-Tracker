@@ -36,15 +36,12 @@ function MeasurementReducer(
       break;
     // deleting a measurement by dispatching this action .
     case "deleteMeasurement":
-      console.log(action.payload);
       const deletedMeasurements = state.measurements.filter((measurement) => {
         return (
           measurement.weight !== action.payload.weight &&
           measurement.date !== action.payload.date
         );
       });
-
-      console.log(deletedMeasurements);
 
       return Object.assign({}, state, {
         updating: true,

@@ -19,7 +19,7 @@ interface Measurement {
 //this is the  form state types
 interface FormState {
   users: Array<any>;
-  weights: {
+  measurementsData: {
     measurements: Array<Measurement>;
     updating: Boolean;
   };
@@ -36,7 +36,7 @@ function Form(props: any) {
 
   // getting the measurements total measurements Length once for performance reasons .
   const totalMeasurementsLength = useSelector(
-    (state: FormState) => state.weights.measurements.length
+    (state: FormState) => state.measurementsData.measurements.length
   );
 
   // this input variable  stores  weight information ;
@@ -49,7 +49,6 @@ function Form(props: any) {
 
   // handle input value change
   const handleChange = (newValue: Date | null) => {
-    console.log(newValue);
     setValue(newValue);
   };
 

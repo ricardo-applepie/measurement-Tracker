@@ -5,7 +5,7 @@ import MeasurementReducer from "./reducer/measurements/measurements";
 // Combining all redux reducers , which are simple functions that returns an object or state
 const reducers = combineReducers({
   users: usersReducer,
-  weights: MeasurementReducer,
+  measurementsData: MeasurementReducer,
 });
 
 export default reducers;

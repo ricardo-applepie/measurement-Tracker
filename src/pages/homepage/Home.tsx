@@ -18,7 +18,6 @@ class HomePage extends React.Component<HomeProps, homepageState> {
   constructor(props: HomeProps) {
     super(props);
     this.state = this.createStore(props);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentWillReceiveProps(prevprops: any, nextProps: any) {
@@ -35,10 +34,6 @@ class HomePage extends React.Component<HomeProps, homepageState> {
       measurements: props.measurements,
     };
   }
-
-  handleDelete = () => {
-    console.log(this);
-  };
 
   render() {
     const { measurements } = this.state.measurements;
@@ -62,13 +57,10 @@ class HomePage extends React.Component<HomeProps, homepageState> {
             <div className="list-wrapper">
               <ul className="list-group">
                 {measurements &&
-                  measurements.map((measurement: any, i: number) => {
+                  measurements.map((measurement: any, index: number) => {
                     return (
                       <React.Fragment>
-                        <li
-                          key={`${measurement.id}`}
-                          className="list-group-item"
-                        >
+                        <li key={index} className="list-group-item">
                           <span className="list-weight">
                             {measurement.weight}
                           </span>
@@ -134,7 +126,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 // connecting redux store to Homepage component , so this component can have access to state .
 export default connect(
   (state: any) => ({
-    measurements: state.weights,
+    measurements: state.measurementsData,
   }),
   mapDispatchToProps
 )(HomePage);
