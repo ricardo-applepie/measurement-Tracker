@@ -2,8 +2,13 @@ import React from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
+interface ProgressBar {
+  totalMeasurements: number;
+  value: number;
+}
+
 // This is a progress bar component , which displays measurements total
-function ProgressBar(props: any) {
+function ProgressBar(props: ProgressBar) {
   const value = 0.66;
   return (
     <React.Fragment>

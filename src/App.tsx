@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/homepage/Home";
 import Navbar from "./components/navbar/Navbar";
 
-function App() {
+const App: React.FC<{}> = () => {
   return (
     <div className="container">
       <Navbar />
@@ -13,6 +13,6 @@ function App() {
       <footer>footer section</footer>
     </div>
   );
-}
+};
 
 export default App;

@@ -13,14 +13,23 @@ import {
   measurementSuccess,
 } from "../../store/actionCreators/actions";
 import Modal from "../../components/modal/Modal";
+import { Dispatch } from "redux";
 
+interface Prevprops {
+  dispatch: Dispatch;
+  measurements: {
+    measurements: Array<Measurement>;
+    updating: Boolean;
+  };
+}
 class HomePage extends React.Component<HomeProps, homepageState> {
   constructor(props: HomeProps) {
     super(props);
     this.state = this.createStore(props);
   }
 
-  componentWillReceiveProps(prevprops: any, nextProps: any) {
+  componentWillReceiveProps(prevprops: HomeProps) {
+    console.log(prevprops);
     // updates HomePage state if props from parent changes
     if (prevprops.measurements) {
       this.setState({
@@ -29,7 +38,7 @@ class HomePage extends React.Component<HomeProps, homepageState> {
       });
     }
   }
-  createStore(props: any) {
+  createStore(props: HomeProps) {
     return {
       measurements: props.measurements,
     };
@@ -119,7 +128,7 @@ class HomePage extends React.Component<HomeProps, homepageState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   dispatch,
 });
 

@@ -15,10 +15,15 @@ interface Measurement {
   weight: string;
   date: string;
 }
+interface User {
+  name: string;
+  age: number;
+  city: string;
+}
 
 //this is the  form state types
 interface FormState {
-  users: Array<any>;
+  users: Array<User>;
   measurementsData: {
     measurements: Array<Measurement>;
     updating: Boolean;
@@ -26,7 +31,7 @@ interface FormState {
 }
 
 type FormProps = {
-  measurement: any;
+  measurement: Measurement;
   showUpdateButton: Boolean;
   deleteMeasurement: Boolean;
 };

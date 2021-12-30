@@ -1,10 +1,10 @@
 import { Action } from "../../actionTypes/actionTypes";
-import { WeightMeasurements } from "./measurementsTypes";
+import { WeightMeasurements, Measurement } from "./measurementsTypes";
 
 var _ = require("lodash");
 const browserStorage = localStorage.getItem("reduxState");
 const persistedState = browserStorage && JSON.parse(browserStorage);
-console.log(persistedState.measurementsData);
+
 const INITIALSTATE: WeightMeasurements = {
   // dummy data to be displayed , before actual data is added by  the user .
   measurements: [
@@ -54,7 +54,7 @@ function MeasurementReducer(
       const newMeasurement = action.payload.newMeasurement;
 
       const updatedMeasurement = state.measurements.filter(
-        (measurement: any) => {
+        (measurement: Measurement) => {
           return (
             measurement.weight !== action.payload.oldMeasurement.weight &&
             measurement.date !== action.payload.oldMeasurement.date
