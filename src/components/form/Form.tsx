@@ -25,8 +25,15 @@ interface FormState {
   };
 }
 
+type FormProps = {
+  measurement: any;
+  showUpdateButton: Boolean;
+  deleteMeasurement: Boolean;
+};
+
 function Form(props: any) {
   const dispatch = useDispatch();
+
   // getting the measurements total measurements Length once for performance reasons .
   const totalMeasurementsLength = useSelector(
     (state: FormState) => state.weights.measurements.length
@@ -34,31 +41,36 @@ function Form(props: any) {
 
   // this input variable  stores  weight information ;
   const [input, setInput] = useState("");
+
   // setting date value from the picker component.
   const [value, setValue] = React.useState<Date | null>(
     new Date("2014-08-18T21:11:54")
   );
 
+  // handle input value change
   const handleChange = (newValue: Date | null) => {
     console.log(newValue);
     setValue(newValue);
   };
 
-  //this function submits the user measurement
-  const submitMeasurement = (e: React.SyntheticEvent) => {
+  //this function submits the a user new measurement .
+  const submitNewMeasurement = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (input.length === 0) {
       alert("please enter Weight");
       return;
     }
+
     // new user measurement
     let measurement = {
       id: totalMeasurementsLength + 1,
       weight: input,
       date: value,
     };
-    // adding measurement from form input
+
+    //dispatches action to  add  a new measurement
     dispatch(addMeasurement(measurement));
+
     // removes loading spinner after measurement has been added
     setTimeout(() => {
       dispatch(measurementSuccess());
@@ -68,15 +80,16 @@ function Form(props: any) {
     setInput("");
   };
 
-  // this function edits the measurement and dispatches the updated measurement to update measurement state
+  // This function edits the selected measurement and dispatches action to update the measurement .
   const handleMeasurementUpdate = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    // denies the user to submit a measurement if the input has no character .
     if (input.length === 0) {
       alert("please enter Weight");
       return;
     }
-    // getting the existing or old measurement
-    let oldMeasurement = props.measurement;
+    // getting the existing or selected measurement
+    let selectedMeasurent = props.measurement;
     // getting the new measurements
     let newMeasurement = {
       id: totalMeasurementsLength + 1,
@@ -85,9 +98,10 @@ function Form(props: any) {
     };
 
     // deleting the old measurement which is to be update
-    deleteMeasurement(oldMeasurement);
+    deleteMeasurement(selectedMeasurent);
+
     // dispatching updateMeasurement action to update this  measurement.
-    dispatch(updateMeasurement(newMeasurement, oldMeasurement));
+    dispatch(updateMeasurement(newMeasurement, selectedMeasurent));
 
     // delaying measurementSuccess action  ,so  spinner can be removed after 2 secounds
     setTimeout(function () {
@@ -104,7 +118,7 @@ function Form(props: any) {
           // conditional checking which function to be executed depeneding if the showUpdateButton is true  or undifined
           props.showUpdateButton
             ? (e) => handleMeasurementUpdate(e)
-            : (e) => submitMeasurement(e)
+            : (e) => submitNewMeasurement(e)
         }
         className="form-wrapper"
       >

@@ -7,7 +7,7 @@ interface ButtonProps {
 
 interface ButtonState {}
 
-// a reusable button component which recieves props .
+// reusable button component which recieves props  from parent component.
 
 class SimpleButton extends React.Component<ButtonProps, ButtonState> {
   constructor(props: ButtonProps) {

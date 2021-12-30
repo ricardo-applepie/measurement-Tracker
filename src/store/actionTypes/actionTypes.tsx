@@ -11,8 +11,8 @@ interface DeleteMeasurement {
     date: string;
   };
 }
-interface addWeight {
-  type: "addMessurement";
+interface AddWeight {
+  type: "addMeasurement";
   payload: Object;
 }
 interface UpdateMessurement {
@@ -28,7 +28,8 @@ interface MessurementSuccess {
 
 export type Action =
   | getUsers
-  | addWeight
+  | AddWeight
   | MessurementSuccess
   | DeleteMeasurement
-  | UpdateMessurement;
+  | UpdateMessurement
+  | any;

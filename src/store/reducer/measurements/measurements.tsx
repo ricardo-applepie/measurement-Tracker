@@ -1,5 +1,5 @@
 import { Action } from "../../actionTypes/actionTypes";
-import { WeightMeasurements } from "./weightTypes";
+import { WeightMeasurements } from "./measurementsTypes";
 
 var _ = require("lodash");
 
@@ -26,7 +26,7 @@ function MeasurementReducer(
 ) {
   switch (action.type) {
     // adding a measurement by dispatching this action .
-    case "addMessurement":
+    case "addMeasurement":
       let addedMeasurement = action.payload;
       const newMeasurements = [...state.measurements, addedMeasurement];
       return Object.assign({}, state, {

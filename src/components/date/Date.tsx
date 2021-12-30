@@ -5,6 +5,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 
+// Date picker component
 export default function DatePicker(props: any) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>

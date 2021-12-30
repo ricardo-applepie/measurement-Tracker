@@ -6,7 +6,7 @@ export interface Measurement {
 
 export function addMeasurement(measurement: Measurement) {
   return {
-    type: "addMessurement",
+    type: "addMeasurement",
     payload: measurement,
   };
 }
