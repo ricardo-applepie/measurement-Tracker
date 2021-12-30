@@ -22,6 +22,16 @@ interface Prevprops {
     updating: Boolean;
   };
 }
+interface User {
+  id: string;
+  city: string;
+  name: string;
+}
+interface ReduxState {
+  users: Array<User>;
+  measurementsData: any;
+}
+
 class HomePage extends React.Component<HomeProps, homepageState> {
   constructor(props: HomeProps) {
     super(props);
@@ -135,7 +145,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 // connecting redux store to Homepage component , so this component can have access to state .
 export default connect(
-  (state: any) => ({
+  (state: ReduxState) => ({
     measurements: state.measurementsData,
   }),
   mapDispatchToProps
