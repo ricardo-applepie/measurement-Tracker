@@ -127,7 +127,7 @@ function Form(props: any) {
         className="form-wrapper"
       >
         <div className={`input-group  row`}>
-          <div className="col">
+          <div className="col-sm-12 col-md-4 col-lg-4">
             <input
               onChange={(e) => setInput(e.target.value)}
               type="text"
@@ -138,10 +138,10 @@ function Form(props: any) {
               aria-describedby="basic-addon2"
             />
           </div>
-          <div className="col">
+          <div className="col-sm-12 col-md-4 col-lg-4">
             <DatePicker value={value} handleChange={handleChange} />
           </div>
-          <div className="col">
+          <div className="col-sm-12 col-md-4 col-lg-4">
             {props.showUpdateButton ? (
               <Button
                 type="submit"

@@ -1,0 +1,15 @@
+.MuiBox-root {
+  max-width: 400px;
+  input {
+    width: 100%;
+  }
+  button {
+    width: 100%;
+  }
+  .input-group {
+    flex-direction: column;
+    .col {
+      margin-top: 10px;
+    }
+  }
+}

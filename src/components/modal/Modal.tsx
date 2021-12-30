@@ -2,7 +2,7 @@ import * as React from "react";
 import { styled, Box } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import Form from "../form/Form";
-
+import "./modal.scss";
 interface Measurement {
   id: string;
   weight: string;
@@ -51,7 +51,7 @@ export default function Modal(props: ModalProps) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <div className="general-modal">
       <div onClick={handleOpen}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
