@@ -2,7 +2,9 @@ import { Action } from "../../actionTypes/actionTypes";
 import { WeightMeasurements } from "./measurementsTypes";
 
 var _ = require("lodash");
-
+const browserStorage = localStorage.getItem("reduxState");
+const persistedState = browserStorage && JSON.parse(browserStorage);
+console.log(persistedState.measurementsData);
 const INITIALSTATE: WeightMeasurements = {
   // dummy data to be displayed , before actual data is added by  the user .
   measurements: [
@@ -21,7 +23,7 @@ const INITIALSTATE: WeightMeasurements = {
 };
 
 function MeasurementReducer(
-  state: WeightMeasurements = INITIALSTATE,
+  state: WeightMeasurements = persistedState.measurementsData || INITIALSTATE,
   action: Action
 ) {
   switch (action.type) {
@@ -37,10 +39,7 @@ function MeasurementReducer(
     // deleting a measurement by dispatching this action .
     case "deleteMeasurement":
       const deletedMeasurements = state.measurements.filter((measurement) => {
-        return (
-          measurement.weight !== action.payload.weight &&
-          measurement.date !== action.payload.date
-        );
+        return measurement.id !== action.payload.id;
       });
 
       return Object.assign({}, state, {
