@@ -11,6 +11,7 @@ interface DatePickerProps {
 }
 // Date picker component
 export default function DatePicker(props: DatePickerProps) {
+  console.log(props.value);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Stack spacing={3}>

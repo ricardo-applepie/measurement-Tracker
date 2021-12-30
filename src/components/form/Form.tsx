@@ -93,7 +93,7 @@ function Form(props: any) {
       return;
     }
     // getting the existing or selected measurement
-    let selectedMeasurent = props.measurement;
+    let selectedMeasurement = props.measurement;
     // getting the new measurements
     let newMeasurement = {
       id: totalMeasurementsLength + 1,
@@ -102,10 +102,10 @@ function Form(props: any) {
     };
 
     // deleting the old measurement which is to be update
-    deleteMeasurement(selectedMeasurent);
+    deleteMeasurement(selectedMeasurement);
 
     // dispatching updateMeasurement action to update this  measurement.
-    dispatch(updateMeasurement(newMeasurement, selectedMeasurent));
+    dispatch(updateMeasurement(newMeasurement, selectedMeasurement));
 
     // delaying measurementSuccess action  ,so  spinner can be removed after 2 secounds
     setTimeout(function () {
