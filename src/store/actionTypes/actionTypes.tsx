@@ -43,4 +43,5 @@ export type Action =
   | AddWeight
   | MessurementSuccess
   | DeleteMeasurement
-  | UpdateMessurement;
+  | UpdateMessurement
+  | any;
