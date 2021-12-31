@@ -68,7 +68,7 @@ function MeasurementReducer(
     case "updateMeasurement":
       const newMeasurement = action.payload.newMeasurement;
 
-      const updatedMeasurement = state.measurements.filter(
+      const updatedMeasurements = state.measurements.filter(
         (measurement: Measurement) => {
           return measurement.id !== action.payload.oldMeasurement.id;
         }
@@ -78,7 +78,7 @@ function MeasurementReducer(
         {},
         state,
         { updating: true },
-        { measurements: [...updatedMeasurement, newMeasurement] }
+        { measurements: [...updatedMeasurements, newMeasurement] }
       );
 
       break;
