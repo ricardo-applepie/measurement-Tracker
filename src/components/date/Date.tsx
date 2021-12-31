@@ -6,12 +6,11 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 
 interface DatePickerProps {
-  handleChange: any;
-  value: any;
+  handleChange: (value: Date | null) => void;
+  value: Date | null;
 }
 // Date picker component
 export default function DatePicker(props: DatePickerProps) {
-  console.log(props.value);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Stack spacing={3}>

@@ -45,7 +45,7 @@ function Form(props: any) {
   );
 
   // this input variable  stores  weight information ;
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState<string>("");
 
   // setting date value from the picker component.
   const [value, setValue] = React.useState<Date | null>(
