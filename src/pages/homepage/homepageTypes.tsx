@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 export interface Measurement {
   id: number;
   weight: string;
-  date: Date | null;
+  date: Date | null | string;
 }
 export type HomeProps = {
   measurements: Array<Measurement>;
