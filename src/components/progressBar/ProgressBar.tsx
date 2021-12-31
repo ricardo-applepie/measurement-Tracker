@@ -24,7 +24,7 @@ function ProgressBar(props: ProgressBar) {
       <CircularProgressbar
         value={props.value}
         maxValue={1}
-        text={`${props.value * 100}%`}
+        text={`${Math.floor(props.value * 100)}%`}
       />
       ;
     </React.Fragment>
