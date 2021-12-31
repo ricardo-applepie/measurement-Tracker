@@ -1,7 +1,7 @@
 export interface Measurement {
   id: number;
   weight: string;
-  date?: string | any;
+  date: Date | null;
 }
 
 export function addMeasurement(measurement: Measurement) {
