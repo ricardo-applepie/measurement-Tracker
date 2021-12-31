@@ -15,17 +15,17 @@ svg {
 }
 //overiding boostrap default behaviour
 .input-group {
-  // never to use important in production , this is just for testing reasons
+  // never to use !important in production , this is just for testing reasons
   align-items: center !important;
 }
 //overiding boostrap modal default behaviour
 
 .css-10d6jr0 {
-  // never to use important in production , this is just for testing reasons
+  // never to use !important in production , this is just for testing reasons
   width: 100% !important;
 }
 input {
-  // never to use important in production , this is just for testing reasons
+  // never to use !important in production , this is just for testing reasons
   background-color: $white-color !important;
 }
 footer {
