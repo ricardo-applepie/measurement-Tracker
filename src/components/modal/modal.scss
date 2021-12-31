@@ -1,5 +1,8 @@
 .MuiBox-root {
   max-width: 400px;
+  @media screen and (min-width: 769px) {
+    max-width: 800px;
+  }
   input {
     width: 100%;
   }
