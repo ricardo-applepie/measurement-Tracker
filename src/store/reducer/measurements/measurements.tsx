@@ -3,14 +3,19 @@ import { WeightMeasurements, Measurement } from "./measurementsTypes";
 
 var _ = require("lodash");
 
+interface persistedState {
+  users: Object;
+  measurementsData: WeightMeasurements;
+}
+
 function isNotJestEnvironment() {
   return process.env.JEST_WORKER_ID == undefined;
 }
 
 //ReferenceError: localStorage is not defined during jest test
-let browserStorage: any;
+let browserStorage: string | null | WeightMeasurements | undefined;
 //cannot persist state for now , because jest cant access the localStorage Object .
-let persistedState: any;
+let persistedState: persistedState | undefined | null;
 
 const INITIALSTATE: WeightMeasurements = {
   // dummy data to be displayed , before actual data is added by  the user .

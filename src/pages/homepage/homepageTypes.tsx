@@ -10,6 +10,11 @@ export type HomeProps = {
   dispatch: Dispatch;
 };
 
+interface Data {
+  measurements: Array<Measurement>;
+  updating: Boolean;
+}
+
 export type homepageState = {
   measurements: any;
 };

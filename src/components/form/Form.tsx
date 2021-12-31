@@ -11,7 +11,7 @@ import {
 } from "../../store/actionCreators/actions";
 
 interface Measurement {
-  id: string;
+  id: number;
   weight: string;
   date: string;
 }
@@ -30,13 +30,13 @@ interface FormState {
   };
 }
 
-type FormProps = {
-  measurement: Measurement;
-  showUpdateButton: Boolean;
-  deleteMeasurement: Boolean;
-};
+interface FormProps {
+  deleteMeasurement?: Boolean;
+  measurement?: any;
+  showUpdateButton?: Boolean;
+}
 
-function Form(props: any) {
+function Form(props: FormProps) {
   const dispatch = useDispatch();
 
   // getting the measurements total measurements Length once for performance reasons .

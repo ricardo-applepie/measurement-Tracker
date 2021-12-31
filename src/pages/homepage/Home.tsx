@@ -22,6 +22,7 @@ interface Prevprops {
     updating: Boolean;
   };
 }
+
 interface User {
   id: string;
   city: string;
@@ -39,7 +40,6 @@ class HomePage extends React.Component<HomeProps, homepageState> {
   }
 
   componentWillReceiveProps(prevprops: HomeProps) {
-    console.log(prevprops);
     // updates HomePage state if props from parent changes
     if (prevprops.measurements) {
       this.setState({
