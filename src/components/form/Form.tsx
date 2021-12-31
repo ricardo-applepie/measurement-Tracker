@@ -57,7 +57,7 @@ function Form(props: any) {
     setValue(newValue);
   };
 
-  //this function submits the a user new measurement .
+  //this function submits  a user new measurement .
   const submitNewMeasurement = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (input.length === 0) {
