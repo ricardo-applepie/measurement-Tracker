@@ -54,13 +54,15 @@ function MeasurementReducer(
       break;
     // deleting a measurement by dispatching this action .
     case "deleteMeasurement":
-      const deletedMeasurements = state.measurements.filter((measurement) => {
-        return measurement.id !== action.payload.id;
-      });
+      const filteredUpdatedMeasurements = state.measurements.filter(
+        (measurement) => {
+          return measurement.id !== action.payload.id;
+        }
+      );
 
       return Object.assign({}, state, {
         updating: true,
-        measurements: deletedMeasurements,
+        measurements: filteredUpdatedMeasurements,
       });
       break;
     // updating a measurement by dispatching this action .
