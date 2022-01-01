@@ -1,16 +1,9 @@
 import * as React from "react";
 import { styled, Box } from "@mui/system";
+import "./modal.scss";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import Form from "../form/Form";
-import "./modal.scss";
-interface Measurement {
-  id: string;
-  weight: string;
-  date: string;
-}
-interface ModalProps {
-  measurement: Measurement;
-}
+import { ModalProps } from "./modalTypes";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -46,6 +39,7 @@ const style = {
 
 // General popup Modal , used to edit measurement .
 export default function Modal(props: ModalProps) {
+  // modal default state
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

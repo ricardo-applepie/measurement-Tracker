@@ -1,12 +1,9 @@
 import MeasurementReducer from "../../store/reducer/measurements/measurements";
-import {
-  addMeasurement,
-  deleteMeasurement,
-} from "../../store/actionCreators/actions";
+import { addMeasurement, deleteMeasurement } from "../../store/actions/actions";
 import { createStore, applyMiddleware } from "redux";
 import reducers from "../../store/combinedReducers";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { WeightMeasurements } from "../../store/reducer/measurements/measurementsTypes";
+import { MeasurementsData } from "../../store/reducer/measurements/measurementsTypes";
 
 const INITIALSTATE = {
   // dummy data to be displayed , before actual data is added by  the user .
@@ -60,7 +57,7 @@ test("should return the initial state", () => {
 });
 
 test("Testing redux previous state ", () => {
-  const previousState: WeightMeasurements = INITIALSTATE;
+  const previousState: MeasurementsData = INITIALSTATE;
   expect(
     MeasurementReducer(previousState, addMeasurement(measurement))
   ).toEqual({
@@ -70,7 +67,7 @@ test("Testing redux previous state ", () => {
 });
 
 test("Testing redux previous state when dispatching deleteMeasurement ", () => {
-  const previousState: WeightMeasurements = INITIALSTATE;
+  const previousState: MeasurementsData = INITIALSTATE;
   expect(
     MeasurementReducer(previousState, deleteMeasurement(deletedMeasurement))
   ).toEqual({

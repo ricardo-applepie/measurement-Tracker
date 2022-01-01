@@ -1,4 +1,4 @@
-import { Action } from "../../actionTypes/actionTypes";
+import { Action } from "../../actions/actionsTypes";
 
 let INITIALSTATE: Array<{ name: string; age: number; city: string }> = [
   {

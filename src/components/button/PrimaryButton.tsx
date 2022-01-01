@@ -1,14 +1,8 @@
 import React from "react";
+import { ButtonProps, ButtonState } from "./primaryButtonTypes";
 
-interface ButtonProps {
-  buttonText: string;
-}
-
-interface ButtonState {}
-
-// reusable button component which recieves props  from parent component.
-
-class SimpleButton extends React.Component<ButtonProps, ButtonState> {
+// Reusable button component which recieves props from any parent component.
+class PrimaryButton extends React.Component<ButtonProps, ButtonState> {
   constructor(props: ButtonProps) {
     super(props);
   }
@@ -24,4 +18,4 @@ class SimpleButton extends React.Component<ButtonProps, ButtonState> {
   }
 }
 
-export default SimpleButton;
+export default PrimaryButton;

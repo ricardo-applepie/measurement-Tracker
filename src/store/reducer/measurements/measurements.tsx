@@ -1,24 +1,22 @@
-import { Action } from "../../actionTypes/actionTypes";
-import { WeightMeasurements, Measurement } from "./measurementsTypes";
+import { Action } from "../../actions/actionsTypes";
+import { MeasurementsData, Measurement } from "./measurementsTypes";
 
 var _ = require("lodash");
 
 interface persistedState {
   users: Object;
-  measurementsData: WeightMeasurements;
+  measurementsData: MeasurementsData;
 }
 
 function isNotJestEnvironment() {
   return process.env.JEST_WORKER_ID == undefined;
 }
 
-//ReferenceError: localStorage is not defined during jest test
-let browserStorage: string | null | WeightMeasurements | undefined;
-//cannot persist state for now , because jest cant access the localStorage Object .
+let browserStorage: string | null | MeasurementsData | undefined;
 let persistedState: persistedState | undefined | null;
 
-const INITIALSTATE: WeightMeasurements = {
-  // dummy data to be displayed , before actual data is added by  the user .
+const INITIALSTATE: MeasurementsData = {
+  // Dummy data to be displayed , before actual data is added by  the user .
   measurements: [
     {
       id: 1,
@@ -35,20 +33,21 @@ const INITIALSTATE: WeightMeasurements = {
 };
 
 if (isNotJestEnvironment()) {
-  //this prevents the error called ReferenceError: localStorage is not defined during jest test
+  // prevents the error  "ReferenceError: localStorage is not defined during jest test", by setting  browserStorage  and persistedState in this scope .
   browserStorage = localStorage.getItem("reduxState");
-  //cannot persist state for now , because jest cant access the localStorage Object .
+
+  // parsing browserStorage json data to object
   persistedState = browserStorage && JSON.parse(browserStorage);
 }
 
 function MeasurementReducer(
-  state: WeightMeasurements = (persistedState &&
+  state: MeasurementsData = (persistedState &&
     persistedState.measurementsData) ||
     INITIALSTATE,
   action: Action
 ) {
   switch (action.type) {
-    // adding a measurement by dispatching this action .
+    // adding a new measurement  .
     case "addMeasurement":
       let addedMeasurement = action.payload;
       const newMeasurements = [...state.measurements, addedMeasurement];
@@ -57,7 +56,8 @@ function MeasurementReducer(
         measurements: newMeasurements,
       });
       break;
-    // deleting a measurement by dispatching this action .
+
+    // deleting user measurement by id
     case "deleteMeasurement":
       const filteredUpdatedMeasurements = state.measurements.filter(
         (measurement) => {
@@ -70,8 +70,8 @@ function MeasurementReducer(
         measurements: filteredUpdatedMeasurements,
       });
       break;
-    // updating a measurement by dispatching this action .
 
+    // updating user measurement .
     case "updateMeasurement":
       const newMeasurement = action.payload.newMeasurement;
 
@@ -89,6 +89,7 @@ function MeasurementReducer(
       );
 
       break;
+
     //  returning  default state
     case "MessurementSuccess":
       return Object.assign({}, state, { updating: false });

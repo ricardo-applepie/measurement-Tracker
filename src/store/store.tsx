@@ -7,7 +7,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 export const store = createStore(reducers, composeWithDevTools());
 
 // saving redux state to localStorage .
-
 store.subscribe(() => {
   localStorage.setItem("reduxState", JSON.stringify(store.getState()));
 });

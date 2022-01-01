@@ -8,56 +8,31 @@ import {
   measurementSuccess,
   deleteMeasurement,
   updateMeasurement,
-} from "../../store/actionCreators/actions";
-
-interface Measurement {
-  id: number;
-  weight: string;
-  date: string;
-}
-interface User {
-  name: string;
-  age: number;
-  city: string;
-}
-
-//this is the  form state types
-interface FormState {
-  users: Array<User>;
-  measurementsData: {
-    measurements: Array<Measurement>;
-    updating: Boolean;
-  };
-}
-
-interface FormProps {
-  deleteMeasurement?: Boolean;
-  measurement?: any;
-  showUpdateButton?: Boolean;
-}
+} from "../../store/actions/actions";
+import { FormState, FormProps } from "./formTypes";
 
 function Form(props: FormProps) {
   const dispatch = useDispatch();
 
-  // getting the measurements total measurements Length once for performance reasons .
+  // Getting user's total measurements from redux store .
   const totalMeasurementsLength = useSelector(
     (state: FormState) => state.measurementsData.measurements.length
   );
 
-  // this input variable  stores  weight information ;
+  // stores input values
   const [input, setInput] = useState<string>("");
 
-  // setting date value from the picker component.
+  // stores and sets  date value from the picker component.
   const [value, setValue] = React.useState<Date | null>(
     new Date("2014-08-18T21:11:54")
   );
 
-  // handle input value change
+  // handles input change
   const handleChange = (newValue: Date | null) => {
     setValue(newValue);
   };
 
-  //this function submits  a user new measurement .
+  // submit's a new user measurement .
   const submitNewMeasurement = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (input.length === 0) {
@@ -65,21 +40,22 @@ function Form(props: FormProps) {
       return;
     }
 
-    // new user measurement
+    // new user measurement object
     let measurement = {
       id: totalMeasurementsLength + 1,
       weight: input,
       date: value,
     };
 
-    //dispatches action to  add  a new measurement
+    // dispatches an action to add a new measurement
     dispatch(addMeasurement(measurement));
 
-    // removes loading spinner after measurement has been added
+    // removes loading spinner after measurement successfully added
     setTimeout(() => {
       dispatch(measurementSuccess());
     }, 1000);
 
+    // resets form values after measurement added
     setValue(new Date());
     setInput("");
   };
@@ -87,13 +63,16 @@ function Form(props: FormProps) {
   // This function edits the selected measurement and dispatches action to update the measurement .
   const handleMeasurementUpdate = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    // denies the user to submit a measurement if the input has no character .
+
+    // preventing user from adding a  measurement , if the input is empty .
     if (input.length === 0) {
       alert("please enter Weight");
       return;
     }
+
     // getting the existing or selected measurement
     let selectedMeasurement = props.measurement;
+
     // getting the new measurements
     let newMeasurement = {
       id: totalMeasurementsLength + 1,
@@ -101,16 +80,17 @@ function Form(props: FormProps) {
       date: value,
     };
 
-    // deleting the old measurement which is to be update
+    // deleting selected measurement
     deleteMeasurement(selectedMeasurement);
 
     // dispatching updateMeasurement action to update this  measurement.
     dispatch(updateMeasurement(newMeasurement, selectedMeasurement));
 
-    // delaying measurementSuccess action  ,so  spinner can be removed after 2 secounds
+    // delaying measurementSuccess action ,so  spinner can be removed after 2 secounds
     setTimeout(function () {
       dispatch(measurementSuccess());
     }, 2000);
+
     setValue(new Date());
     setInput("");
   };
@@ -119,7 +99,7 @@ function Form(props: FormProps) {
     <div className="form">
       <form
         onSubmit={
-          // conditional checking which function to be executed depeneding if the showUpdateButton is true  or undifined
+          // Conditional checking which function is to be executed , depeneding if the showUpdateButton is true  or undifined
           props.showUpdateButton
             ? (e) => handleMeasurementUpdate(e)
             : (e) => submitNewMeasurement(e)

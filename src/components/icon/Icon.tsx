@@ -1,12 +1,8 @@
 import React from "react";
+import { ButtonIconProps } from "./iconTypes";
 
-import DeleteIcon from "@mui/icons-material/Delete";
-
-interface IconProps {
-  iconType: string;
-}
-
-function IconButtons(props: IconProps) {
+// Resuable Icons
+function ButtonIcon(props: ButtonIconProps) {
   switch (props.iconType) {
     case "delete":
       return (
@@ -26,4 +22,4 @@ function IconButtons(props: IconProps) {
   }
 }
 
-export default IconButtons;
+export default ButtonIcon;

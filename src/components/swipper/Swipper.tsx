@@ -1,22 +1,10 @@
-import React, {
-  ReactChildren,
-  ReactChild,
-  ReactFragment,
-  ReactPortal,
-} from "react";
+import React from "react";
 import "./swipper.scss";
 import excercise from "../../images/excercise.png";
 import lenus from "../../images/lenus.png";
+import { ReactNode } from "./swipperTypes";
 
-type ReactNode =
-  | ReactChild
-  | ReactFragment
-  | ReactPortal
-  | boolean
-  | null
-  | undefined;
-
-// carousel component , used to display the slider images .
+// Carousel component , used to display  slider images .
 function Carousel(props: ReactNode) {
   return (
     <div

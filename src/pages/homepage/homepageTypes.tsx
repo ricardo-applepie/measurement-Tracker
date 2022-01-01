@@ -10,11 +10,16 @@ export type HomeProps = {
   dispatch: Dispatch;
 };
 
-interface Data {
-  measurements: Array<Measurement>;
-  updating: Boolean;
-}
-
 export type homepageState = {
   measurements: any;
 };
+
+export interface User {
+  id: string;
+  city: string;
+  name: string;
+}
+export interface ReduxState {
+  users: Array<User>;
+  measurementsData: any;
+}

@@ -1,44 +1,26 @@
 import React from "react";
 import "./homepage.scss";
 import Form from "../../components/form/Form";
-import Iconbuttons from "../../components/icon/Icon";
+import ButtonIcon from "../../components/icon/Icon";
 import DatePicker from "../../components/date/Date";
 import ProgressBar from "../../components/progressBar/ProgressBar";
 import Carousel from "../../components/swipper/Swipper";
-import { HomeProps, homepageState } from "./homepageTypes";
+import { HomeProps, homepageState, User, ReduxState } from "./homepageTypes";
 import { connect, useDispatch } from "react-redux";
 import {
   deleteMeasurement,
   Measurement,
   measurementSuccess,
-} from "../../store/actionCreators/actions";
+} from "../../store/actions/actions";
 import Modal from "../../components/modal/Modal";
 import { Dispatch } from "redux";
-
-interface Prevprops {
-  dispatch: Dispatch;
-  measurements: {
-    measurements: Array<Measurement>;
-    updating: Boolean;
-  };
-}
-
-interface User {
-  id: string;
-  city: string;
-  name: string;
-}
-interface ReduxState {
-  users: Array<User>;
-  measurementsData: any;
-}
 
 class HomePage extends React.Component<HomeProps, homepageState> {
   constructor(props: HomeProps) {
     super(props);
     this.state = this.createStore(props);
   }
-
+  // ran when component receives  props
   componentWillReceiveProps(prevprops: HomeProps) {
     // updates HomePage state if props from parent changes
     if (prevprops.measurements) {
@@ -48,6 +30,7 @@ class HomePage extends React.Component<HomeProps, homepageState> {
       });
     }
   }
+  // creates app state from props .
   createStore(props: HomeProps) {
     return {
       measurements: props.measurements,
@@ -55,8 +38,11 @@ class HomePage extends React.Component<HomeProps, homepageState> {
   }
 
   render() {
+    //measurements array data
     const { measurements } = this.state.measurements;
+    // spinner state
     const updating = this.state.measurements.updating;
+    // total measurements
     const totalMeasurements = measurements.length;
 
     return (
@@ -142,7 +128,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   dispatch,
 });
 
-// connecting redux store to Homepage component , so this component can have access to state .
+// connecting redux store to Homepage component (using connect HOC) , so  component can have access to redux state .
 export default connect(
   (state: ReduxState) => ({
     measurements: state.measurementsData,

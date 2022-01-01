@@ -1,4 +1,4 @@
-import { Measurement } from "../actionCreators/actions";
+import { Measurement } from "./actions";
 
 interface getUsers {
   type: "test";
@@ -11,7 +11,7 @@ interface DeleteMeasurement {
     date: string;
   };
 }
-interface AddWeight {
+interface AddMeasurement {
   type: "addMeasurement";
   payload: Object;
 }
@@ -28,7 +28,7 @@ interface MessurementSuccess {
 
 export type Action =
   | getUsers
-  | AddWeight
+  | AddMeasurement
   | MessurementSuccess
   | DeleteMeasurement
   | UpdateMessurement
