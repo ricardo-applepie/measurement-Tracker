@@ -1,9 +1,9 @@
-import MeasurementReducer from '../../store/reducer/measurements/measurements';
+import MeasurementReducer from '../../store/reducers/measurements/measurements';
 import { addMeasurement, deleteMeasurement } from '../../store/actions/actions';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from '../../store/combinedReducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { MeasurementsData } from '../../store/reducer/measurements/measurementsTypes';
+import { MeasurementsData } from '../../store/reducers/measurements/measurementsTypes';
 
 const INITIALSTATE = {
   // dummy data to be displayed , before actual data is added by  the user .

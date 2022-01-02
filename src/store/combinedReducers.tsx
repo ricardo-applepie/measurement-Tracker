@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import usersReducer from './reducer/users/users';
-import MeasurementReducer from './reducer/measurements/measurements';
+import usersReducer from './reducers/users/users';
+import MeasurementReducer from './reducers/measurements/measurements';
 
 // Combining all redux reducers , which are simple functions that returns an object or state .
 const reducers = combineReducers({
