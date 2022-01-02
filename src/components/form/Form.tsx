@@ -73,7 +73,7 @@ function Form(props: FormProps) {
     // getting the existing or selected measurement
     let selectedMeasurement = props.measurement;
 
-    // getting the new measurements
+    // new measurements object
     let newMeasurement = {
       id: totalMeasurementsLength + 1,
       weight: input,
