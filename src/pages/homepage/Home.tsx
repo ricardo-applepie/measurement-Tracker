@@ -49,7 +49,7 @@ class HomePage extends React.Component<HomeProps, homepageState> {
       <div className="homepage">
         {updating && <div className="spinner-border" role="status"></div>}
         <section className="row form-section hero">
-          <h1 className="center">Measurement Track</h1>
+          <h1 className="center">Measurement Tracker</h1>
           <div className="col-md-3">
             <ProgressBar
               value={totalMeasurements / 100}
