@@ -1,8 +1,8 @@
-import React from "react";
-import "./swipper.scss";
-import excercise from "../../images/excercise.png";
-import lenus from "../../images/lenus.png";
-import { ReactNode } from "./swipperTypes";
+import React from 'react';
+import './swipper.scss';
+import excercise from '../../images/excercise.png';
+import lenus from '../../images/lenus.png';
+import { ReactNode } from './swipperTypes';
 
 // Carousel component , used to display  slider images .
 function Carousel(props: ReactNode) {

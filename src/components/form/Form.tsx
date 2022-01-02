@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./form.scss";
-import Button from "@material-ui/core/Button";
-import DatePicker from "../date/Date";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './form.scss';
+import Button from '@material-ui/core/Button';
+import DatePicker from '../date/Date';
 import {
   addMeasurement,
   measurementSuccess,
   deleteMeasurement,
   updateMeasurement,
-} from "../../store/actions/actions";
-import { FormState, FormProps } from "./formTypes";
+} from '../../store/actions/actions';
+import { FormState, FormProps } from './formTypes';
 
 function Form(props: FormProps) {
   const dispatch = useDispatch();
@@ -20,11 +20,11 @@ function Form(props: FormProps) {
   );
 
   // stores input values
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
 
   // stores and sets  date value from the picker component.
   const [value, setValue] = React.useState<Date | null>(
-    new Date("2014-08-18T21:11:54")
+    new Date('2014-08-18T21:11:54')
   );
 
   // handles input change
@@ -36,7 +36,7 @@ function Form(props: FormProps) {
   const submitNewMeasurement = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (input.length === 0) {
-      alert("please enter Weight");
+      alert('please enter Weight');
       return;
     }
 
@@ -57,7 +57,7 @@ function Form(props: FormProps) {
 
     // resets form values after measurement added
     setValue(new Date());
-    setInput("");
+    setInput('');
   };
 
   // This function edits the selected measurement and dispatches action to update the measurement .
@@ -66,7 +66,7 @@ function Form(props: FormProps) {
 
     // preventing user from adding a  measurement , if the input is empty .
     if (input.length === 0) {
-      alert("please enter Weight");
+      alert('please enter Weight');
       return;
     }
 
@@ -92,7 +92,7 @@ function Form(props: FormProps) {
     }, 2000);
 
     setValue(new Date());
-    setInput("");
+    setInput('');
   };
 
   return (

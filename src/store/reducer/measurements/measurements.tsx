@@ -1,7 +1,7 @@
-import { Action } from "../../actions/actionsTypes";
-import { MeasurementsData, Measurement } from "./measurementsTypes";
+import { Action } from '../../actions/actionsTypes';
+import { MeasurementsData, Measurement } from './measurementsTypes';
 
-var _ = require("lodash");
+var _ = require('lodash');
 
 interface persistedState {
   users: Object;
@@ -20,13 +20,13 @@ const INITIALSTATE: MeasurementsData = {
   measurements: [
     {
       id: 1,
-      weight: "50kg",
-      date: "Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)",
+      weight: '50kg',
+      date: 'Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)',
     },
     {
       id: 2,
-      weight: "80kg",
-      date: "Tues Sep 30 2014 21:11:54 GMT+0200 (Central European Summer Time)",
+      weight: '80kg',
+      date: 'Tues Sep 30 2014 21:11:54 GMT+0200 (Central European Summer Time)',
     },
   ],
   updating: false,
@@ -34,7 +34,7 @@ const INITIALSTATE: MeasurementsData = {
 
 if (isNotJestEnvironment()) {
   // prevents the error  "ReferenceError: localStorage is not defined during jest test", by setting  browserStorage  and persistedState in this scope .
-  browserStorage = localStorage.getItem("reduxState");
+  browserStorage = localStorage.getItem('reduxState');
 
   // parsing browserStorage json data to object
   persistedState = browserStorage && JSON.parse(browserStorage);
@@ -48,7 +48,7 @@ function MeasurementReducer(
 ) {
   switch (action.type) {
     // adding a new measurement  .
-    case "addMeasurement":
+    case 'addMeasurement':
       let addedMeasurement = action.payload;
       const newMeasurements = [...state.measurements, addedMeasurement];
       return Object.assign({}, state, {
@@ -58,7 +58,7 @@ function MeasurementReducer(
       break;
 
     // deleting user measurement by id
-    case "deleteMeasurement":
+    case 'deleteMeasurement':
       const filteredUpdatedMeasurements = state.measurements.filter(
         (measurement) => {
           return measurement.id !== action.payload.id;
@@ -72,7 +72,7 @@ function MeasurementReducer(
       break;
 
     // updating user measurement .
-    case "updateMeasurement":
+    case 'updateMeasurement':
       const newMeasurement = action.payload.newMeasurement;
 
       const updatedMeasurements = state.measurements.filter(
@@ -91,7 +91,7 @@ function MeasurementReducer(
       break;
 
     //  returning  default state
-    case "MessurementSuccess":
+    case 'MessurementSuccess':
       return Object.assign({}, state, { updating: false });
       break;
     default:

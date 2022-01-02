@@ -1,9 +1,9 @@
-import * as React from "react";
-import { styled, Box } from "@mui/system";
-import "./modal.scss";
-import ModalUnstyled from "@mui/base/ModalUnstyled";
-import Form from "../form/Form";
-import { ModalProps } from "./modalTypes";
+import * as React from 'react';
+import { styled, Box } from '@mui/system';
+import './modal.scss';
+import ModalUnstyled from '@mui/base/ModalUnstyled';
+import Form from '../form/Form';
+import { ModalProps } from './modalTypes';
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -17,7 +17,7 @@ const StyledModal = styled(ModalUnstyled)`
   justify-content: center;
 `;
 
-const Backdrop = styled("div")`
+const Backdrop = styled('div')`
   z-index: -1;
   position: fixed;
   right: 0;
@@ -30,8 +30,8 @@ const Backdrop = styled("div")`
 
 const style = {
   width: 400,
-  bgcolor: "none",
-  border: "2px solid #000",
+  bgcolor: 'none',
+  border: '2px solid #000',
   p: 2,
   px: 4,
   pb: 3,

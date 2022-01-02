@@ -1,29 +1,29 @@
-import { Measurement } from "./actions";
+import { Measurement } from './actions';
 
 interface getUsers {
-  type: "test";
+  type: 'test';
   payload: Object;
 }
 interface DeleteMeasurement {
-  type: "deleteMeasurement";
+  type: 'deleteMeasurement';
   payload: {
     weight: string;
     date: string;
   };
 }
 interface AddMeasurement {
-  type: "addMeasurement";
+  type: 'addMeasurement';
   payload: Object;
 }
 interface UpdateMessurement {
-  type: "updateMeasurement";
+  type: 'updateMeasurement';
   payload: {
     oldMeasurement: Measurement;
     newMeasurement: Measurement;
   };
 }
 interface MessurementSuccess {
-  type: "MessurementSuccess";
+  type: 'MessurementSuccess';
 }
 
 export type Action =

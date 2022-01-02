@@ -1,5 +1,5 @@
-import React from "react";
-import { ButtonProps, ButtonState } from "./primaryButtonTypes";
+import React from 'react';
+import { ButtonProps, ButtonState } from './primaryButtonTypes';
 
 // Reusable button component which recieves props from any parent component.
 class PrimaryButton extends React.Component<ButtonProps, ButtonState> {

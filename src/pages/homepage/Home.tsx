@@ -1,19 +1,19 @@
-import React from "react";
-import "./homepage.scss";
-import Form from "../../components/form/Form";
-import ButtonIcon from "../../components/icon/Icon";
-import DatePicker from "../../components/date/Date";
-import ProgressBar from "../../components/progressBar/ProgressBar";
-import Carousel from "../../components/swipper/Swipper";
-import { HomeProps, homepageState, User, ReduxState } from "./homepageTypes";
-import { connect, useDispatch } from "react-redux";
+import React from 'react';
+import './homepage.scss';
+import Form from '../../components/form/Form';
+import ButtonIcon from '../../components/icon/Icon';
+import DatePicker from '../../components/date/Date';
+import ProgressBar from '../../components/progressBar/ProgressBar';
+import Carousel from '../../components/swipper/Swipper';
+import { HomeProps, homepageState, User, ReduxState } from './homepageTypes';
+import { connect, useDispatch } from 'react-redux';
 import {
   deleteMeasurement,
   Measurement,
   measurementSuccess,
-} from "../../store/actions/actions";
-import Modal from "../../components/modal/Modal";
-import { Dispatch } from "redux";
+} from '../../store/actions/actions';
+import Modal from '../../components/modal/Modal';
+import { Dispatch } from 'redux';
 
 class HomePage extends React.Component<HomeProps, homepageState> {
   constructor(props: HomeProps) {

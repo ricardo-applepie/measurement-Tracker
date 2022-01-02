@@ -1,16 +1,16 @@
-import { Action } from "../../actions/actionsTypes";
+import { Action } from '../../actions/actionsTypes';
 
 let INITIALSTATE: Array<{ name: string; age: number; city: string }> = [
   {
-    name: "Ricardo",
+    name: 'Ricardo',
     age: 12,
-    city: "Copenhagen",
+    city: 'Copenhagen',
   },
 ];
 
 function usersReducer(state = INITIALSTATE, action: Action) {
   switch (action.type) {
-    case "test":
+    case 'test':
       return Object.assign({}, state, {});
       break;
 
