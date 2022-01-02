@@ -20,7 +20,7 @@ class HomePage extends React.Component<HomeProps, homepageState> {
     super(props);
     this.state = this.createStore(props);
   }
-  // ran when component receives  props
+  // method runs when component receives  props .
   componentWillReceiveProps(prevprops: HomeProps) {
     // updates HomePage state if props from parent changes
     if (prevprops.measurements) {
