@@ -12,7 +12,7 @@ test('testing if button is rendered ', () => {
   // manually trigger the callback
 });
 
-test('testing if button is rendered ', () => {
+test('testing if Icon is rendered ', () => {
   const component = renderer.create(<ButtonIcon iconType="button" />);
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
