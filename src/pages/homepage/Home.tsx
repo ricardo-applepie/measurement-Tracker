@@ -38,7 +38,7 @@ class HomePage extends React.Component<HomeProps, homepageState> {
   }
 
   render() {
-    //measurements array data
+    // destructured measurements data
     const { measurements } = this.state.measurements;
     // spinner state
     const updating = this.state.measurements.updating;
