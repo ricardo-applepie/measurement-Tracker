@@ -80,7 +80,7 @@ function Form(props: FormProps) {
       date: value,
     };
 
-    // deleting selected measurement
+    // action to delete selected measurement
     deleteMeasurement(selectedMeasurement);
 
     // dispatching updateMeasurement action to update this  measurement.
