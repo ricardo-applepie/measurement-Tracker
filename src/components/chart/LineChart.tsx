@@ -38,7 +38,7 @@ const LineChart = () => {
   useEffect(() => {
     getMeasurementsWeight(measurements);
     getLabels(measurements);
-  }, [labels, weights]);
+  }, [measurements]);
 
   // chart data
   const chartData = {
