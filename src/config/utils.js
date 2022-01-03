@@ -13,6 +13,7 @@ Date.prototype.monthNames = [
   'December',
 ];
 
+// updating Date objects prototype ,by adding new methods inorder to get month name rather than number.
 Date.prototype.getMonthName = function () {
   return this.monthNames[this.getMonth()];
 };
@@ -22,5 +23,5 @@ Date.prototype.getShortMonthName = function () {
 
 // usage:
 var d = new Date();
-alert(d.getMonthName()); // "October"
-alert(d.getShortMonthName()); //
+console(d.getMonthName()); // "October"
+console(d.getShortMonthName()); //Oct
