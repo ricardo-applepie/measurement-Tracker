@@ -1,20 +1,31 @@
 import React from 'react';
 import './homepage.scss';
+// dispatch hook
+import { Dispatch } from 'redux';
+// form component
 import Form from '../../components/form/Form';
+// button icon component
 import ButtonIcon from '../../components/icon/Icon';
+// date picker component
 import DatePicker from '../../components/date/Date';
+// progress bar component
 import ProgressBar from '../../components/progressBar/ProgressBar';
+// carousel component
 import Carousel from '../../components/swipper/Swipper';
+// homepage state and prop types
 import { HomeProps, homepageState, User, ReduxState } from './homepageTypes';
+// redux connect
 import { connect, useDispatch } from 'react-redux';
+// redux actions
 import {
   deleteMeasurement,
   Measurement,
   measurementSuccess,
 } from '../../store/actions/actions';
+// modal types
 import Modal from '../../components/modal/Modal';
-import { Dispatch } from 'redux';
 
+// homepage component
 class HomePage extends React.Component<HomeProps, homepageState> {
   constructor(props: HomeProps) {
     super(props);

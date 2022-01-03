@@ -4,7 +4,7 @@ import excercise from '../../images/excercise.png';
 import lenus from '../../images/lenus.png';
 import { ReactNode } from './swipperTypes';
 
-// Carousel component , used to display  slider images .
+// Carousel component , used to display static slider images .
 function Carousel(props: ReactNode) {
   return (
     <div

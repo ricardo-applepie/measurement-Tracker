@@ -4,13 +4,14 @@ export interface Measurement {
   date: string;
 }
 
+// user state type
 export interface User {
   name: string;
   age: number;
   city: string;
 }
 
-//this is the  form state types
+// form state types
 export interface FormState {
   users: Array<User>;
   measurementsData: {
@@ -19,6 +20,7 @@ export interface FormState {
   };
 }
 
+// form props
 export interface FormProps {
   deleteMeasurement?: Boolean;
   measurement?: any;

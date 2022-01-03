@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { styled, Box } from '@mui/system';
+// modal css
 import './modal.scss';
+// modal from mui
 import ModalUnstyled from '@mui/base/ModalUnstyled';
+// form component
 import Form from '../form/Form';
+// modal props
 import { ModalProps } from './modalTypes';
 
 const StyledModal = styled(ModalUnstyled)`

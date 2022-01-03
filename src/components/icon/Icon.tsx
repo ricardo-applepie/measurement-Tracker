@@ -1,7 +1,8 @@
 import React from "react";
+// icon types
 import { ButtonIconProps } from "./iconTypes";
 
-// Resuable Icons
+// Resuable Icon component.
 function ButtonIcon(props: ButtonIconProps) {
   switch (props.iconType) {
     case "delete":

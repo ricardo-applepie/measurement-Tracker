@@ -12,6 +12,7 @@ export function addMeasurement(measurement: Measurement) {
     payload: measurement,
   };
 }
+
 // action to delete user measurement
 export function deleteMeasurement(measurement: Measurement) {
   return {

@@ -9,5 +9,5 @@ const reducers = combineReducers({
 });
 
 export default reducers;
-//  RootState is required to use useSelector later on
+//  RootState  required , to use useSelector later on
 export type RootState = ReturnType<typeof reducers>;

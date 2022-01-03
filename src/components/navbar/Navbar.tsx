@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Boostrap navbar  .
+// Boostrap navbar component .
 function Navbar() {
   return (
     <div>

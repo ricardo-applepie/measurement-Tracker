@@ -1,3 +1,4 @@
+// redux actions type
 import { Action } from '../../actions/actionsTypes';
 
 let INITIALSTATE: Array<{ name: string; age: number; city: string }> = [

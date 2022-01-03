@@ -34,7 +34,7 @@ let deletedMeasurement = {
   date: 'Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)',
 };
 
-test('testing INITIALSTATE object', () => {
+test('testing INITIALSTATE Object', () => {
   expect(INITIALSTATE).toEqual(INITIALSTATE);
 });
 
@@ -66,7 +66,7 @@ test('Testing redux previous state ', () => {
   });
 });
 
-test('Testing redux previous state when dispatching deleteMeasurement ', () => {
+test('Testing redux previous state , when dispatching deleteMeasurement action', () => {
   const previousState: MeasurementsData = INITIALSTATE;
   expect(
     MeasurementReducer(previousState, deleteMeasurement(deletedMeasurement))

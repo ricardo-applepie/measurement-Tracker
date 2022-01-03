@@ -3,7 +3,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { ProgressBarProps } from './progressBarTypes';
 
-// Simple Progress bar component , which displays measurements timeline
+// Simple Progress bar component , which displays measurements timeline .
 function ProgressBar(props: ProgressBarProps) {
   const value = 0.66;
   return (

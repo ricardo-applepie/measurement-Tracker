@@ -4,6 +4,7 @@ interface getUsers {
   type: 'test';
   payload: Object;
 }
+
 interface DeleteMeasurement {
   type: 'deleteMeasurement';
   payload: {
@@ -11,10 +12,12 @@ interface DeleteMeasurement {
     date: string;
   };
 }
+
 interface AddMeasurement {
   type: 'addMeasurement';
   payload: Object;
 }
+
 interface UpdateMessurement {
   type: 'updateMeasurement';
   payload: {
@@ -22,6 +25,7 @@ interface UpdateMessurement {
     newMeasurement: Measurement;
   };
 }
+
 interface MessurementSuccess {
   type: 'MessurementSuccess';
 }

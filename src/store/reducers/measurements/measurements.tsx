@@ -36,7 +36,7 @@ if (isNotJestEnvironment()) {
   // prevents the error  "ReferenceError: localStorage is not defined during jest test", by setting  browserStorage  and persistedState in this scope .
   browserStorage = localStorage.getItem('reduxState');
 
-  // parsing browserStorage json data to object
+  // parsing browserStorage json data
   persistedState = browserStorage && JSON.parse(browserStorage);
 }
 

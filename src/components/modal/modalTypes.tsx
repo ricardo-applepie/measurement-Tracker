@@ -4,6 +4,7 @@ export interface Measurement {
   date: string;
 }
 
+// modal prop types
 export interface ModalProps {
   measurement: Measurement;
 }

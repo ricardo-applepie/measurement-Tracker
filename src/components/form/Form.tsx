@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import './form.scss';
 import Button from '@material-ui/core/Button';
 import DatePicker from '../date/Date';
+import { FormState, FormProps } from './formTypes';
 import {
   addMeasurement,
   measurementSuccess,
   deleteMeasurement,
   updateMeasurement,
 } from '../../store/actions/actions';
-import { FormState, FormProps } from './formTypes';
 
 function Form(props: FormProps) {
   const dispatch = useDispatch();
@@ -19,20 +19,20 @@ function Form(props: FormProps) {
     (state: FormState) => state.measurementsData.measurements.length
   );
 
-  // stores input values
+  // hook storing and setting input value
   const [input, setInput] = useState<string>('');
 
-  // stores and sets  date value from the picker component.
+  // hook storing and setting date value
   const [value, setValue] = React.useState<Date | null>(
     new Date('2014-08-18T21:11:54')
   );
 
-  // handles input change
+  // handleChange function handles input change
   const handleChange = (newValue: Date | null) => {
     setValue(newValue);
   };
 
-  // submit's a new user measurement .
+  // function invoked when submitting a new user measurement .
   const submitNewMeasurement = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (input.length === 0) {
@@ -40,17 +40,17 @@ function Form(props: FormProps) {
       return;
     }
 
-    // new user measurement object
+    // new user measurement object .
     let measurement = {
       id: totalMeasurementsLength + 1,
       weight: input,
       date: value,
     };
 
-    // dispatches an action to add a new measurement
+    // dispatches  action ,which adds a new measurement to redux measurements state .
     dispatch(addMeasurement(measurement));
 
-    // removes loading spinner after measurement successfully added
+    //  removes loading spinner , if  measurement was successfully added .
     setTimeout(() => {
       dispatch(measurementSuccess());
     }, 1000);
@@ -60,37 +60,37 @@ function Form(props: FormProps) {
     setInput('');
   };
 
-  // This function edits the selected measurement and dispatches action to update the measurement .
+  // edits  selected measurement and dispatches an  action to update  the selected measurement .
   const handleMeasurementUpdate = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    // preventing user from adding a  measurement , if the input is empty .
+    // prevents user from adding a measurement , if the input field is empty .
     if (input.length === 0) {
       alert('please enter Weight');
       return;
     }
 
-    // getting the existing or selected measurement
+    // gets existing or selected measurement .
     let selectedMeasurement = props.measurement;
 
-    // new measurements object
     let newMeasurement = {
       id: totalMeasurementsLength + 1,
       weight: input,
       date: value,
     };
 
-    // action to delete selected measurement
+    // redux action to delete selected measurement
     deleteMeasurement(selectedMeasurement);
 
-    // dispatching updateMeasurement action to update this  measurement.
+    // dispatching  action to update selected measurement.
     dispatch(updateMeasurement(newMeasurement, selectedMeasurement));
 
-    // delaying measurementSuccess action ,so  spinner can be removed after 2 secounds
+    // removes loading spinner after 2 seconds
     setTimeout(function () {
       dispatch(measurementSuccess());
     }, 2000);
 
+    // rest hooks state
     setValue(new Date());
     setInput('');
   };
@@ -99,7 +99,7 @@ function Form(props: FormProps) {
     <div className="form">
       <form
         onSubmit={
-          // Conditional checking which function is to be executed , depeneding if the showUpdateButton is true  or undifined
+          // Conditional checking which function  to be executed , depending  if the showUpdateButton is set to true  or undifined
           props.showUpdateButton
             ? (e) => handleMeasurementUpdate(e)
             : (e) => submitNewMeasurement(e)
