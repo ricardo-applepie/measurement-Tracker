@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Chart, registerables } from 'chart.js';
 import { Measurement, Measurements, MeasurementsData } from './LineChartTypes';
 
+// registering chart js componets , removing this class ,  causes an errror , and app wont be rendered.
 Chart.register(...registerables);
 
 const LineChart = () => {
@@ -11,9 +12,11 @@ const LineChart = () => {
     (state: any) => state.measurementsData.measurements
   );
 
+  // default Weights and line chart labels list .
   let [labels, setLabels] = React.useState([1]);
   let [weights, setWeights] = React.useState([2]);
 
+  // line chart y-axis data
   function getMeasurementsWeight(measurements: any) {
     let measurementsWeightList = measurements.map(
       (measurement: Measurement) => {
@@ -23,7 +26,7 @@ const LineChart = () => {
     // setting weights list
     setWeights(measurementsWeightList);
   }
-
+  // line chart x-axis data
   function getLabels(measurements: any) {
     let labels = measurements.map(
       (measurement: Measurement) => measurement.weight
@@ -37,12 +40,13 @@ const LineChart = () => {
     getLabels(measurements);
   }, [labels, weights]);
 
+  // chart data
   const chartData = {
     labels: labels,
     // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
     datasets: [
       {
-        label: 'Measurements ',
+        label: 'Measurements',
         data: weights,
         // you can set indiviual colors for each bar
         borderWidth: 1,
