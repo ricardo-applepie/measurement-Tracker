@@ -39,12 +39,16 @@ function Form(props: FormProps) {
       alert('please enter Weight');
       return;
     }
-
+    if (Number(input) > 500) {
+      alert('weight not possible ');
+      return;
+    }
     // new user measurement object .
     let measurement = {
       id: totalMeasurementsLength + 1,
-      weight: input,
+      weight: `${input}kg`,
       date: value,
+      month: value?.getMonth(),
     };
 
     // dispatches  action ,which adds a new measurement to redux measurements state .
@@ -75,8 +79,9 @@ function Form(props: FormProps) {
 
     let newMeasurement = {
       id: totalMeasurementsLength + 1,
-      weight: input,
+      weight: `${input}kg`,
       date: value,
+      month: value?.getMonth(),
     };
 
     // redux action to delete selected measurement
@@ -110,7 +115,7 @@ function Form(props: FormProps) {
           <div className="col-sm-12 col-md-4 col-lg-4">
             <input
               onChange={(e) => setInput(e.target.value)}
-              type="text"
+              type="number"
               value={input}
               className="form-control"
               placeholder="Please enter weight"

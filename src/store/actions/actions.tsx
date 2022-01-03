@@ -3,6 +3,7 @@ export interface Measurement {
   id: number;
   weight: string;
   date: Date | null | string;
+  month: any;
 }
 
 // action to add user measurement

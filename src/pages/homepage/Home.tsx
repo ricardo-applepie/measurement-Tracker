@@ -24,6 +24,8 @@ import {
 } from '../../store/actions/actions';
 // modal types
 import Modal from '../../components/modal/Modal';
+// LineChart
+import LineChart from '../../components/chart/LineChart';
 
 // homepage component
 class HomePage extends React.Component<HomeProps, homepageState> {
@@ -116,6 +118,11 @@ class HomePage extends React.Component<HomeProps, homepageState> {
             </div>
           </div>
         </section>
+        <section>
+          <br />
+          <h1 className="center">Measurements Graph</h1>
+          <LineChart />
+        </section>
         <section className="excercise">
           <div className="row">
             <div className="col col-md-8">
@@ -129,7 +136,6 @@ class HomePage extends React.Component<HomeProps, homepageState> {
             </div>
           </div>
         </section>
-        <section></section>
       </div>
     );
   }

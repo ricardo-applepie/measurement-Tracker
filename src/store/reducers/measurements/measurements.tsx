@@ -22,11 +22,13 @@ const INITIALSTATE: MeasurementsData = {
       id: 1,
       weight: '50kg',
       date: 'Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)',
+      month: 1,
     },
     {
       id: 2,
       weight: '80kg',
       date: 'Tues Sep 30 2014 21:11:54 GMT+0200 (Central European Summer Time)',
+      month: 2,
     },
   ],
   updating: false,

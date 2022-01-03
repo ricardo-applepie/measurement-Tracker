@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`testing if Icon is rendered  1`] = `
+<div>
+  <svg
+    data-testid="DeleteIcon"
+  />
+</div>
+`;
+
 exports[`testing if button is rendered  1`] = `
 <div>
   <button
@@ -8,14 +16,6 @@ exports[`testing if button is rendered  1`] = `
   >
     btnText
   </button>
-</div>
-`;
-
-exports[`testing if button is rendered  2`] = `
-<div>
-  <svg
-    data-testid="DeleteIcon"
-  />
 </div>
 `;
 

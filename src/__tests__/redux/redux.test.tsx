@@ -12,11 +12,13 @@ const INITIALSTATE = {
       id: 1,
       weight: '50kg',
       date: 'Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)',
+      month: 1,
     },
     {
       id: 2,
       weight: '80kg',
       date: 'Tues Sep 30 2014 21:11:54 GMT+0200 (Central European Summer Time)',
+      month: 2,
     },
   ],
   updating: false,
@@ -26,12 +28,14 @@ let measurement = {
   id: 3,
   weight: '50kg',
   date: 'today',
+  month: 3,
 };
 
 let deletedMeasurement = {
   id: 1,
   weight: '50kg',
   date: 'Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)',
+  month: 1,
 };
 
 test('testing INITIALSTATE Object', () => {
@@ -77,6 +81,7 @@ test('Testing redux previous state , when dispatching deleteMeasurement action',
         id: 2,
         weight: '80kg',
         date: 'Tues Sep 30 2014 21:11:54 GMT+0200 (Central European Summer Time)',
+        month: 2,
       },
     ],
     updating: true,
@@ -93,6 +98,7 @@ test('testing measurements state ', () => {
     id: 1,
     weight: '50kg',
     date: 'Mon Aug 18 2014 21:11:54 GMT+0200 (Central European Summer Time)',
+    month: 1,
   });
 
   expect(store.getState().measurementsData.measurements[0].id).toBe(1);
