@@ -1,4 +1,4 @@
-// Button props types
+// Button prop types
 export interface ButtonProps {
   buttonText: string;
 }
