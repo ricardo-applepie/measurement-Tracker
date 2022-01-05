@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Chart, registerables } from 'chart.js';
 import { Measurement, Measurements, MeasurementsData } from './LineChartTypes';
 
-// registering chart js componets , removing this class ,  causes an errror , and app wont be rendered.
+// registering chart js
 Chart.register(...registerables);
 
 const LineChart = () => {
@@ -12,7 +12,7 @@ const LineChart = () => {
     (state: any) => state.measurementsData.measurements
   );
 
-  // default Weights and line chart labels list .
+  // default Weights and line chart labels .
   let [labels, setLabels] = React.useState([1]);
   let [weights, setWeights] = React.useState([2]);
 
