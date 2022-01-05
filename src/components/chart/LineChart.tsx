@@ -48,7 +48,6 @@ const LineChart = () => {
       {
         label: 'Measurements',
         data: weights,
-        // you can set indiviual colors for each bar
         borderWidth: 1,
       },
     ],
